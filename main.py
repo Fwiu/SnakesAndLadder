@@ -8,8 +8,9 @@ screen = pygame.display.set_mode((650, 500))
 pygame.display.set_caption("Snakes And Ladders")
 
 #background
-backimg = pygame.image.load("assets/snakes-and-ladder.jpg")
-stage = pygame.image.load("assets/snakes-and-ladder.jpg")
+backimg = pygame.image.load("assets/background.jpg")
+stage = pygame.image.load("assets/snakes-and-ladder.png")
+# arrow = pygame.image.load("")
 
 backimg = pygame.transform.smoothscale(backimg, (400, 350))
 
@@ -24,10 +25,10 @@ rx = 100
 ry = 251
 
 blx = 100
-bly = 251
+bly = 362
 
-def back():
-    screen.blit(backimg, (0, 0))
+def bck():
+    screen.blit(stage, (0, 0))
     screen.blit(backimg, (bx, by))
 
 def rplayer(x, y):
@@ -36,8 +37,8 @@ def rplayer(x, y):
 def bplayer(x, y):
     screen.blit(bl, (x, y))
 
-back()
+bck()
 rplayer(rx, ry)
 bplayer(blx, bly)
 pygame.display.update()
-pygame.quit()
+# pygame.quit()
