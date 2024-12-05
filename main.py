@@ -10,7 +10,9 @@ pygame.display.set_caption("Snakes And Ladders")
 #background
 backimg = pygame.image.load("assets/background.jpg")
 stage = pygame.image.load("assets/snakes-and-ladder.png")
-arrow = pygame.image.load("assets/arrow.png")
+roll = pygame.image.load("assets/roll.png")
+dicebackground = pygame.image.load("assets/dicebackground.png")
+# arrow = pygame.image.load("assets/arrow.png")
 
 #players
 rl = pygame.image.load("assets/player1.png")
@@ -18,25 +20,31 @@ bl = pygame.image.load("assets/player2.png")
 
 #size and location
 backimg = pygame.transform.smoothscale(backimg, (1280, 720))
-stage = pygame.transform.smoothscale(stage, (720, 720))
-arrow = pygame.transform.smoothscale(arrow, (50, 50))
+stage = pygame.transform.smoothscale(stage, (670, 670))
+roll = pygame.transform.smoothscale(roll, (200, 200))
+dicebackground = pygame.transform.smoothscale(dicebackground, (300, 300))
+# arrow = pygame.transform.smoothscale(arrow, (50, 50))
 rl = pygame.transform.smoothscale(rl, (50, 50))
 bl = pygame.transform.smoothscale(bl, (50, 50))
 
+
+
 #button
-button = pygame.Rect(100, 500, 400, 400)
+button = pygame.Rect(1140, 600, 100, 100)
 
 
-rx = 100
-ry = 251
+rx = 225
+ry = 625
 
-blx = 100
-bly = 362
+blx = 170
+bly = 625
 
 def back():
     screen.blit(backimg, (0, 0))
-    screen.blit(stage, (277, 0))
-    screen.blit(arrow, (10, 90))
+    screen.blit(stage, (277, 25))
+    screen.blit(dicebackground, (1090, 550))
+    screen.blit(roll, (1100, 540))
+    # screen.blit(arrow, (10, 90))
 
 def rplayer(x, y):
     screen.blit(rl, (x, y))
@@ -58,7 +66,6 @@ def pickNumber():
         dice = pygame.image.load("assets/Dice5.png")
     elif diceroll==6:
         dice = pygame.image.load("assets/Dice6.png")
-
     return(dice, diceroll)
 
 run = True
@@ -76,9 +83,10 @@ while run:
             if button.collidepoint(mouse_pos):
                 pickNumber()
                 dice, diceroll = pickNumber()
-                screen.blit(dice, (50, 60))
+                dice = pygame.transform.smoothscale(dice, (150, 150))
+                screen.blit(dice, (1000, 420))
                 print(diceroll)
     pygame.display.update()
-    # time.sleep(1.3)
+    time.sleep(0.8)
 
 pygame.quit()
