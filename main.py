@@ -32,8 +32,8 @@ bl = pygame.transform.smoothscale(bl, (50, 50))
 #button
 button = pygame.Rect(1140, 600, 100, 100)
 
-player1 = pygame.font.SysFont("comicsansms", 25)
-player2 = pygame.font.SysFont("comicsansms", 25)
+font1 = pygame.font.SysFont("comicsansms", 25)
+font2 = pygame.font.SysFont("comicsansms", 20)
 
 rx = 225
 ry = 560
@@ -56,7 +56,7 @@ def bplayer(x, y):
     screen.blit(bl, (x, y))
 
 def pickNumber():
-    diceroll = random.randint(1, 6)
+    diceroll = random.randint(5, 6)
     if diceroll==1:
         dice = pygame.image.load("assets/Dice1.png")
     elif diceroll==2:
@@ -72,18 +72,36 @@ def pickNumber():
     return(dice, diceroll)
 
 def player():
-    msg1 = player1.render("Player 1", True, (0, 0, 255))
+    msg1 = font1.render("Player 1", True, (0, 0, 255))
     screen.blit(msg1, [130, 560])
-    msg2 = player2.render("Player 2", True, (255, 0, 0))
+    msg2 = font1.render("Player 2", True, (255, 0, 0))
     screen.blit(msg2, [130, 625])
 
+def rollr():
+    msg3 = font2.render("Your Turn", True, (0, 0, 0))
+    screen.blit(msg3, [130, 535])
+
+def rollb():
+    msg4 = font2.render("Your Turn", True, (0, 0, 0))
+    screen.blit(msg4, [130, 600])
+    
+
 run = True
+
+turn = 'red'
+
 while run:
 
     back()
     rplayer(rx, ry)
     bplayer(blx, bly)
     player()
+
+    if turn == 'red':
+        rollr()
+    else:
+        rollb()
+
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -96,7 +114,23 @@ while run:
                 dice = pygame.transform.smoothscale(dice, (150, 150))
                 screen.blit(dice, (1000, 420))
                 print(diceroll)
+
+            #for Player 1
+            if pickNumber() and turn == 'red':
+                turn='blue'
+                if diceroll == 6 and rx == 225 and ry == 560:
+                    rx = 300
+                    ry = 625
+                    turn = 'red'
+            #for Player 2
+            elif pickNumber() and turn == 'blue':
+                turn='red'
+                if diceroll == 6 and blx == 225 and bly == 625:
+                    blx = 300
+                    bly = 625
+                    turn = 'blue'
+
     pygame.display.update()
-    time.sleep(0.8)
+    time.sleep(0.4)
 
 pygame.quit()
