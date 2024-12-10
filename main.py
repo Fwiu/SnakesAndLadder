@@ -32,11 +32,14 @@ bl = pygame.transform.smoothscale(bl, (50, 50))
 #button
 button = pygame.Rect(1140, 600, 100, 100)
 
+player1 = pygame.font.SysFont("comicsansms", 25)
+player2 = pygame.font.SysFont("comicsansms", 25)
 
 rx = 225
-ry = 625
+ry = 560
 
-blx = 170
+
+blx = 225
 bly = 625
 
 def back():
@@ -68,12 +71,19 @@ def pickNumber():
         dice = pygame.image.load("assets/Dice6.png")
     return(dice, diceroll)
 
+def player():
+    msg1 = player1.render("Player 1", True, (0, 0, 255))
+    screen.blit(msg1, [130, 560])
+    msg2 = player2.render("Player 2", True, (255, 0, 0))
+    screen.blit(msg2, [130, 625])
+
 run = True
 while run:
 
     back()
     rplayer(rx, ry)
     bplayer(blx, bly)
+    player()
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
