@@ -35,12 +35,16 @@ button = pygame.Rect(1140, 600, 100, 100)
 font1 = pygame.font.SysFont("comicsansms", 25)
 font2 = pygame.font.SysFont("comicsansms", 20)
 
-rx = 225
-ry = 560
+start1 = [225, 560]
+start2 = [225, 625]
 
 
-blx = 225
-bly = 625
+# rx = 225
+# ry = 560
+
+
+# blx = 225
+# bly = 625
 
 def back():
     screen.blit(backimg, (0, 0))
@@ -84,7 +88,11 @@ def rollr():
 def rollb():
     msg4 = font2.render("Your Turn", True, (0, 0, 0))
     screen.blit(msg4, [130, 600])
-    
+
+# def move_player():
+
+
+
 
 run = True
 
@@ -93,8 +101,8 @@ turn = 'red'
 while run:
 
     back()
-    rplayer(rx, ry)
-    bplayer(blx, bly)
+    rplayer(start1[0], start1[1])
+    bplayer(start2[0], start2[1])
     player()
 
     if turn == 'red':
@@ -118,14 +126,14 @@ while run:
             #for Player 1
             if pickNumber() and turn == 'red':
                 turn='blue'
-                if diceroll == 6 and rx == 225 and ry == 560:
+                if diceroll == 6 and start1 == True:
                     rx = 300
                     ry = 625
                     turn = 'red'
             #for Player 2
             elif pickNumber() and turn == 'blue':
                 turn='red'
-                if diceroll == 6 and blx == 225 and bly == 625:
+                if diceroll == 6 and start2 == True:
                     blx = 300
                     bly = 625
                     turn = 'blue'
