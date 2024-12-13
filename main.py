@@ -15,8 +15,8 @@ dicebackground = pygame.image.load("assets/dicebackground.png")
 # arrow = pygame.image.load("assets/arrow.png")
 
 #players
-rl = pygame.image.load("assets/player1.png")
-bl = pygame.image.load("assets/player2.png")
+bl = pygame.image.load("assets/player1.png")
+rl = pygame.image.load("assets/player2.png")
 
 #size and location
 backimg = pygame.transform.smoothscale(backimg, (1280, 720))
@@ -39,48 +39,53 @@ start1 = [225, 560]
 start2 = [225, 625]
 
 tiles1 = [300, 625]
-TILES = {
-    1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
-}
+# TILES = {
+#     [225, 560], [300, 625], 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+# }
 
-POS_TILE = []
-# POS_TILE[] = {1, 2}
+# POS_TILE = {
+#     [TILES[0] = '123, 123'],
+#     [TILES[1]],
+#     [TILES[3]],
+#     [TILES[4]],
+#     [TILES[5]],
+#     }
 
-SNAKES = {
-        27: 8,
-        34: 7,
-        29: 3,
-        69: 31,
-        72: 36,
-        77: 46,
-        80: 41,
-        96: 48,
-        98: 79,
-    }
+# SNAKES = {
+#         27: 8,
+#         34: 7,
+#         29: 3,
+#         69: 31,
+#         72: 36,
+#         77: 46,
+#         80: 41,
+#         96: 48,
+#         98: 79,
+#     }
 
-LADDERS = {
-    4: 16,
-    6: 25,
-    12: 49,
-    20: 40,
-    38: 88,
-    58: 62,
-    71: 93,
-    78: 84,
-    86: 95,
-    }
-
-
-LAST_TILES = 100
-
-
-
-# rx = 225
-# ry = 560
+# LADDERS = {
+#     4: 16,
+#     6: 25,
+#     12: 49,
+#     20: 40,
+#     38: 88,
+#     58: 62,
+#     71: 93,
+#     78: 84,
+#     86: 95,
+#     }
 
 
-# blx = 225
-# bly = 625
+# LAST_TILES = 100
+
+
+
+rx = 225
+ry = 560
+
+
+blx = 225
+bly = 625
 
 class SnakesAndLadders:
     
@@ -108,7 +113,7 @@ class SnakesAndLadders:
         screen.blit(bl, (x, y))
 
     def pickNumber():
-        diceroll = random.randint(5, 6)
+        diceroll = random.randint(1, 6)
         if diceroll==1:
             dice = pygame.image.load("assets/Dice1.png")
         elif diceroll==2:
@@ -124,9 +129,9 @@ class SnakesAndLadders:
         return(dice, diceroll)
 
     def font_player():
-        msg1 = font1.render("Player 1", True, (0, 0, 255))
+        msg1 = font1.render("Player 1", True, (255, 0, 0))
         screen.blit(msg1, [130, 560])
-        msg2 = font1.render("Player 2", True, (255, 0, 0))
+        msg2 = font1.render("Player 2", True, (0, 0, 255))
         screen.blit(msg2, [130, 625])
 
     def rollr():
@@ -137,48 +142,48 @@ class SnakesAndLadders:
         msg4 = font2.render("Your Turn", True, (0, 0, 0))
         screen.blit(msg4, [130, 600])
 
-    def move_player(self, player_i):
-        prev_pos = self.players[player_i]
-        new_pos = prev_pos + self.pickNumber()
+    # def move_player(self, player_i):
+    #     prev_pos = self.players[player_i]
+    #     new_pos = prev_pos + self.pickNumber()
 
-        if new_pos >= self.LAST_TILES:
-            self.winner = player_i
-            new_pos = self.LAST_TILES
-        elif new_pos in self.SNAKES:
-            new_pos = self.SNAKES[new_pos]
-        elif new_pos in self.LADDERS:
-            new_pos = self.LADDERS[new_pos]
+    #     if new_pos >= self.LAST_TILES:
+    #         self.winner = player_i
+    #         new_pos = self.LAST_TILES
+    #     elif new_pos in self.SNAKES:
+    #         new_pos = self.SNAKES[new_pos]
+    #     elif new_pos in self.LADDERS:
+    #         new_pos = self.LADDERS[new_pos]
         
-        self.players[player_i] = new_pos
+    #     self.players[player_i] = new_pos
 
     #move player
-    def move_players(self):
-        for player_i in range(self.n_players):
-            self.move_player(player_i)
-            if self.winner is not None: # done with game
-                break
+    # def move_players(self):
+    #     for player_i in range(self.n_players):
+    #         self.move_player(player_i)
+    #         if self.winner is not None: # done with game
+    #             break
 
-    def play_game(self):
-        while self.winner is None:
-            self.turn += 1
-            self.move_players()
-        return f"Player #{self.winner+1} Wins!"
+    # def play_game(self):
+    #     while self.winner is None:
+    #         self.turn += 1
+    #         self.move_players()
+    #     return f"Player #{self.winner+1} Wins!"
 
     run = True
 
-    font_turn = 'blue'
+    turn = 'red'
 
     while run:
 
         back()
-        rplayer(start1[0], start1[1])
-        bplayer(start2[0], start2[1])
+        rplayer(rx, ry)
+        bplayer(blx, bly)
         font_player()
 
-        if font_turn == 'blue':
-            rollr()
-        else:
+        if turn == 'blue':
             rollb()
+        else:
+            rollr()
 
 
         for event in pygame.event.get():
@@ -192,31 +197,88 @@ class SnakesAndLadders:
                     dice = pygame.transform.smoothscale(dice, (150, 150))
                     screen.blit(dice, (1000, 420))
                     print(diceroll)
+                # if pickNumber() and turn == 'blue':
+                #     turn = 'red'
+                #     if 
+                # elif pickNumber() and turn == 'red':
+                #     turn = 'blue'
+
+                #for Player 1
+                    #row 1
+                if pickNumber() and turn == 'red':
+                    turn='blue'
+                    if diceroll == 6 and rx == 225 and ry == 560:
+                        rx = 300
+                        ry = 625
+                        turn = 'red'
+                    elif rx in range (300, 625) and diceroll != 6 and bly == 625:
+                        rx = rx + (64*diceroll)
+                    elif rx in range (300, 625) and diceroll == 6 and bly == 625:
+                        rx = rx + (64*diceroll)
+                        turn = 'red'
+                    elif rx == 625 and diceroll != 6 and ry == 560:
+                        rx = rx + (64*diceroll)
+                    elif rx == 625 and diceroll == 6 and ry == 560:
+                        rx = rx + (64*diceroll)
+                        ry = ry - 64
+                        turn = 'red'
+                    elif rx == 689 and diceroll <= 4 and ry == 560: #7
+                        rx = rx + (64*diceroll)
+                    elif rx == 689 and diceroll >= 4 and diceroll != 6 and ry == 560:
+                        rx = rx + (64*diceroll)
+                        ry = ry - 64
+                    elif rx == 689 and diceroll == 6 and ry == 560:
+                        rx = rx + (64*4) - (64*(diceroll-5))
+                        ry = ry - 64
+                        turn = 'red'
+                    elif rx == 753 and diceroll <= 3 and ry == 560: #8
+                        rx = rx+(64*diceroll)
+                    elif rx == 753 and diceroll >= 3 and diceroll != 6 and ry == 560:
+                        rx = rx + (64*3) - (64*(diceroll-4))
+                        ry = ry - 64
+                    elif rx == 753 and diceroll == 6 and ry == 560:
+                        rx = rx + (64*3) - (64*(diceroll-4))
+                        ry = ry - 64
+                        turn = 'red'
+                    elif rx == 817 and diceroll <= 2 and ry == 560: #9
+                        rx = rx+(64*diceroll)
+                    elif rx == 817 and diceroll >= 2 and diceroll != 6 and ry == 560:
+                        rx = rx + (64*2) - (64*(diceroll-3))
+                        ry = ry - 64
+                    elif rx == 817 and diceroll == 6 and ry == 560:
+                        rx = rx + (64*2) - (64*(diceroll-3))
+                        ry = ry - 64
+                        turn = 'red'
+                    elif rx == 881 and diceroll == 1 and ry == 560: #10
+                        rx = rx+(64*diceroll)
+                    elif rx == 881 and diceroll >= 1 and diceroll != 6 and ry == 560:
+                        rx = rx + (64*1) - (64*(diceroll-2))
+                        ry = ry - 64
+                    elif rx == 881 and diceroll == 6 and ry == 560:
+                        rx = rx + (64*1) - (64*(diceroll-2))
+                        ry = ry - 64
+                        turn = 'red'
+                    elif rx >= 945 and diceroll != 6 and ry == 560:
+                        rx = rx - (64*(diceroll-1))
+                        ry = ry - 64
+                    elif rx == 945 and diceroll == 6 and ry == 560:
+                        rx = rx - (64*(diceroll-1))
+                        ry = ry - 64
 
 
-                
-
-                if pickNumber() and font_turn == 'blue':
-                        font_turn = 'red'
-                elif pickNumber() and font_turn == 'red':
-                        font_turn = 'blue'
-
-                
-
-                # #for Player 1
-                # if pickNumber() and turn == 'red':
-                #     turn='blue'
-                #     if diceroll == 6 and start1 == True:
-                #         tiles1
-                #         turn = 'red'
-                # #for Player 2
-                # elif pickNumber() and turn == 'blue':
-                #     turn='red'
-                #     if diceroll == 6 and start2 == True:
-                #         blx = 300
-                #         bly = 625
-                #         turn = 'blue'
-        
+                #for Player 2
+                    #row 1
+                elif pickNumber() and turn == 'blue':
+                    turn='red'
+                    if diceroll == 6 and blx == 225 and bly == 625:
+                        blx = 300
+                        bly = 625
+                        turn = 'blue'
+                    elif blx in range (300, 625) and diceroll != 6 and bly == 625:
+                        blx = blx+(64*diceroll)
+                    elif blx in range (300, 625) and diceroll == 6 and bly == 625:
+                        blx = blx+(64*diceroll)
+                        turn = 'blue'
         pygame.display.update()
         time.sleep(0.4)
     
