@@ -35,10 +35,10 @@ button = pygame.Rect(1140, 600, 100, 100)
 font1 = pygame.font.SysFont("comicsansms", 25)
 font2 = pygame.font.SysFont("comicsansms", 20)
 
-start1 = [225, 560]
-start2 = [225, 625]
+# start1 = [225, 560]
+# start2 = [225, 625]
 
-tiles1 = [300, 625]
+# tiles1 = [300, 625]
 # TILES = {
 #     [225, 560], [300, 625], 2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
 # }
@@ -207,79 +207,261 @@ class SnakesAndLadders:
                     #row 1
                 if pickNumber() and turn == 'red':
                     turn='blue'
-                    if diceroll == 6 and rx == 225 and ry == 560:
+                    if diceroll in range (1, 6) and rx == 225 and ry == 560:
                         rx = 300
                         ry = 625
                         turn = 'red'
-                    elif rx in range (300, 625) and diceroll != 6 and bly == 625:
+                    elif rx in range (300, 625) and diceroll != 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*diceroll)
-                    elif rx in range (300, 625) and diceroll == 6 and bly == 625:
+                    elif rx in range (300, 625) and diceroll == 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*diceroll)
                         turn = 'red'
-                    elif rx == 625 and diceroll != 6 and ry == 560:
+                    elif rx == 300 and diceroll != 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*diceroll)
-                    elif rx == 625 and diceroll == 6 and ry == 560:
+                    elif rx == 300 and diceroll == 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*diceroll)
                         ry = ry - 64
                         turn = 'red'
-                    elif rx == 689 and diceroll <= 4 and ry == 560: #7
+                    elif rx == 620 and diceroll <= 4 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113): #7
                         rx = rx + (64*diceroll)
-                    elif rx == 689 and diceroll >= 4 and diceroll != 6 and ry == 560:
+                    elif rx == 620 and diceroll >= 4 and diceroll != 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*diceroll)
                         ry = ry - 64
-                    elif rx == 689 and diceroll == 6 and ry == 560:
+                    elif rx == 620 and diceroll == 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*4) - (64*(diceroll-5))
                         ry = ry - 64
                         turn = 'red'
-                    elif rx == 753 and diceroll <= 3 and ry == 560: #8
+                    elif rx == 684 and diceroll <= 3 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113): #8
                         rx = rx+(64*diceroll)
-                    elif rx == 753 and diceroll >= 3 and diceroll != 6 and ry == 560:
+                    elif rx == 684 and diceroll >= 3 and diceroll != 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*3) - (64*(diceroll-4))
                         ry = ry - 64
-                    elif rx == 753 and diceroll == 6 and ry == 560:
+                    elif rx == 684 and diceroll == 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*3) - (64*(diceroll-4))
                         ry = ry - 64
                         turn = 'red'
-                    elif rx == 817 and diceroll <= 2 and ry == 560: #9
+                    elif rx == 748 and diceroll <= 2 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113): #9
                         rx = rx+(64*diceroll)
-                    elif rx == 817 and diceroll >= 2 and diceroll != 6 and ry == 560:
+                    elif rx == 748 and diceroll >= 2 and diceroll != 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*2) - (64*(diceroll-3))
                         ry = ry - 64
-                    elif rx == 817 and diceroll == 6 and ry == 560:
+                    elif rx == 748 and diceroll == 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*2) - (64*(diceroll-3))
                         ry = ry - 64
                         turn = 'red'
-                    elif rx == 881 and diceroll == 1 and ry == 560: #10
+                    elif rx == 812 and diceroll == 1 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113): #10
                         rx = rx+(64*diceroll)
-                    elif rx == 881 and diceroll >= 1 and diceroll != 6 and ry == 560:
+                    elif rx == 812 and diceroll >= 1 and diceroll != 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*1) - (64*(diceroll-2))
                         ry = ry - 64
-                    elif rx == 881 and diceroll == 6 and ry == 560:
+                    elif rx == 812 and diceroll == 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx + (64*1) - (64*(diceroll-2))
                         ry = ry - 64
                         turn = 'red'
-                    elif rx >= 945 and diceroll != 6 and ry == 560:
+                    elif rx >= 876 and diceroll != 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx - (64*(diceroll-1))
                         ry = ry - 64
-                    elif rx == 945 and diceroll == 6 and ry == 560:
+                    elif rx == 876 and diceroll == 6 and (ry == 625 or ry == 497 or ry == 369 or ry == 241 or ry == 113):
                         rx = rx - (64*(diceroll-1))
                         ry = ry - 64
 
+                    #row 2
+                    elif rx > 556 and rx <= 876 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll != 6:
+                        rx = rx - (64*diceroll)
+                    elif rx > 556 and rx <= 876 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll == 6:
+                        rx = rx - (64*diceroll)
+                    elif rx > 620 and rx <= 876 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll != 6:
+                        rx = rx - (64*diceroll)
+                    elif rx > 620 and rx <= 876 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll == 6:
+                        rx = rx - (64*diceroll)
+                        turn = 'red'
+                    elif rx == 620 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll != 6:
+                        rx = rx - (64*diceroll)
+                    elif rx == 620 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll == 6:
+                        rx = rx - (64*5)
+                        ry = ry - 64
+                        turn = 'red'
+                    elif rx == 556 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll <= 5:
+                        rx = rx - (64*diceroll)
+                    elif rx == 556 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll == 5:
+                        rx = rx - (64*4) + (49*(diceroll-5))
+                        ry = ry - 64 
+                    elif rx == 556 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll == 6:
+                        rx = rx - (64*4) + (49*(diceroll-5))
+                        ry = ry - 64 
+                        turn = 'red'
+                    elif rx == 492 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll <= 4:
+                        rx = rx - (64*diceroll)
+                    elif rx == 492 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll >= 4 and diceroll != 6:
+                        rx = rx - (64*3) + (64*(diceroll-4))
+                        ry = ry - 64
+                    elif rx == 492 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll == 6:
+                        rx = rx - (64*3) + (64*(diceroll-4))
+                        ry = ry - 64
+                        turn = 'red'
+                    elif rx == 428 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll < 3:
+                        rx = rx - (64*diceroll)
+                    elif rx == 428 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll >= 3 and diceroll != 6:
+                        rx = rx - (64*2) + (64*(diceroll-3))
+                        ry = ry - 64
+                    elif rx == 428 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll == 6:
+                        rx = rx - (64*2) + (64*(diceroll-3))
+                        ry = ry - 64
+                        turn = 'red'
+                    elif rx == 364 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll < 2:
+                        rx = rx - (64*diceroll)
+                    elif rx == 364 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll >= 2 and diceroll != 6:
+                        rx = rx - 64 + (64*(diceroll-2))
+                        ry = ry - 64
+                    elif rx == 364 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll == 6:
+                        rx = rx - 64 + (64*(diceroll-2))
+                        ry = ry - 64
+                        turn = 'red'
+                    elif rx == 300 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll != 6:
+                        rx = rx + (64*(diceroll-1))
+                        ry = ry - 64
+                    elif rx == 300 and (ry == 561 or ry == 433 or ry == 305 or ry == 177 or ry == 49) and diceroll == 6:
+                        rx = rx + (64*(diceroll-1))
+                        ry = ry - 64
+                        turn = 'red'
+                    
+                    #for final row
+                    elif ry == 49 and (rx == 812 or rx == 876) and diceroll != 6:
+                        rx = rx - (64*diceroll)
+                        turn = 'red'
+                    elif ry == 49 and (rx == 812 or rx == 876) and diceroll == 6:
+                        rx = rx - (64*diceroll)
+                        turn = 'red'
+                    elif ry == 49 and rx == 684 and diceroll <5:
+                        rx = rx - (64*diceroll)
+                    elif ry == 49 and rx == 684 and diceroll == 5:
+                        rx = rx - (64*diceroll)
+                    # elif ry == 49 and rx == 
+
+                    
 
                 #for Player 2
                     #row 1
                 elif pickNumber() and turn == 'blue':
                     turn='red'
-                    if diceroll == 6 and blx == 225 and bly == 625:
+                    if diceroll in range (1, 6) and blx == 225 and bly == 625:
                         blx = 300
                         bly = 625
                         turn = 'blue'
-                    elif blx in range (300, 625) and diceroll != 6 and bly == 625:
+                    elif blx in range (300, 625) and diceroll != 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*diceroll)
+                    elif blx in range (300, 625) and diceroll == 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*diceroll)
+                        turn = 'red'
+                    elif blx == 300 and diceroll != 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*diceroll)
+                    elif blx == 300 and diceroll == 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*diceroll)
+                        bly = bly - 64
+                        turn = 'red'
+                    elif blx == 620 and diceroll <= 4 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113): #7
+                        blx = blx + (64*diceroll)
+                    elif blx == 620 and diceroll >= 4 and diceroll != 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*diceroll)
+                        bly = bly - 64
+                    elif blx == 620 and diceroll == 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*4) - (64*(diceroll-5))
+                        bly = bly - 64
+                        turn = 'red'
+                    elif blx == 684 and diceroll <= 3 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113): #8
                         blx = blx+(64*diceroll)
-                    elif blx in range (300, 625) and diceroll == 6 and bly == 625:
+                    elif blx == 684 and diceroll >= 3 and diceroll != 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*3) - (64*(diceroll-4))
+                        bly = bly - 64
+                    elif blx == 684 and diceroll == 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*3) - (64*(diceroll-4))
+                        bly = bly - 64
+                        turn = 'red'
+                    elif blx == 748 and diceroll <= 2 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113): #9
                         blx = blx+(64*diceroll)
-                        turn = 'blue'
+                    elif blx == 748 and diceroll >= 2 and diceroll != 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*2) - (64*(diceroll-3))
+                        bly = bly - 64
+                    elif blx == 748 and diceroll == 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*2) - (64*(diceroll-3))
+                        bly = bly - 64
+                        turn = 'red'
+                    elif blx == 812 and diceroll == 1 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113): #10
+                        blx = blx+(64*diceroll)
+                    elif blx == 812 and diceroll >= 1 and diceroll != 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*1) - (64*(diceroll-2))
+                        bly = bly - 64
+                    elif blx == 812 and diceroll == 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx + (64*1) - (64*(diceroll-2))
+                        bly = bly - 64
+                        turn = 'red'
+                    elif blx >= 876 and diceroll != 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx - (64*(diceroll-1))
+                        bly = bly - 64
+                    elif blx == 876 and diceroll == 6 and (bly == 625 or bly == 497 or bly == 369 or bly == 241 or bly == 113):
+                        blx = blx - (64*(diceroll-1))
+                        bly = bly - 64
+
+                    #row 2
+                    elif blx > 556 and blx <= 876 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll != 6:
+                        blx = blx - (64*diceroll)
+                    elif blx > 556 and blx <= 876 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll == 6:
+                        blx = blx - (64*diceroll)
+                    elif blx > 620 and blx <= 876 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll != 6:
+                        blx = blx - (64*diceroll)
+                    elif blx > 620 and blx <= 876 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll == 6:
+                        blx = blx - (64*diceroll)
+                        turn = 'red'
+                    elif blx == 620 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll != 6:
+                        blx = blx - (64*diceroll)
+                    elif blx == 620 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll == 6:
+                        blx = blx - (64*5)
+                        bly = bly - 64
+                        turn = 'red'
+                    elif blx == 556 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll <= 5:
+                        blx = blx - (64*diceroll)
+                    elif blx == 556 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll == 5:
+                        blx = blx - (64*4) + (49*(diceroll-5))
+                        bly = bly - 64 
+                    elif blx == 556 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll == 6:
+                        blx = blx - (64*4) + (49*(diceroll-5))
+                        bly = bly - 64 
+                        turn = 'red'
+                    elif blx == 492 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll <= 4:
+                        blx = blx - (64*diceroll)
+                    elif blx == 492 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll >= 4 and diceroll != 6:
+                        blx = blx - (64*3) + (64*(diceroll-4))
+                        bly = bly - 64
+                    elif blx == 492 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll == 6:
+                        blx = blx - (64*3) + (64*(diceroll-4))
+                        bly = bly - 64
+                        turn = 'red'
+                    elif blx == 428 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll < 3:
+                        blx = blx - (64*diceroll)
+                    elif blx == 428 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll >= 3 and diceroll != 6:
+                        blx = blx - (64*2) + (64*(diceroll-3))
+                        bly = bly - 64
+                    elif blx == 428 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll == 6:
+                        blx = blx - (64*2) + (64*(diceroll-3))
+                        bly = bly - 64
+                        turn = 'red'
+                    elif blx == 364 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll < 2:
+                        blx = blx - (64*diceroll)
+                    elif blx == 364 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll >= 2 and diceroll != 6:
+                        blx = blx - 64 + (64*(diceroll-2))
+                        bly = bly - 64
+                    elif blx == 364 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll == 6:
+                        blx = blx - 64 + (64*(diceroll-2))
+                        bly = bly - 64
+                        turn = 'red'
+                    elif blx == 300 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll != 6:
+                        blx = blx + (64*(diceroll-1))
+                        bly = bly - 64
+                    elif blx == 300 and (bly == 561 or bly == 433 or bly == 305 or bly == 177 or bly == 49) and diceroll == 6:
+                        blx = blx + (64*(diceroll-1))
+                        bly = bly - 64
+                        turn = 'red'
         pygame.display.update()
-        time.sleep(0.4)
+        time.sleep(0.6)
     
 pygame.quit()
